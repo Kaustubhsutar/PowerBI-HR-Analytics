@@ -186,11 +186,10 @@ HR_Analytics_Dashboard/
 │   └── Attendance.xlsx
 │
 ├── Docs/
-│   └── Images/
-│       ├── Overall Dashboard.png
-│       ├── April Dashboard.png
-│       ├── May Dashboard.png
-│       └── June Dashboard.png
+│   ├── Overall Dashboard.png
+│   ├── April Dashboard.png
+│   ├── May Dashboard.png
+│   └── June Dashboard.png
 │
 ├── README.md
 │
@@ -231,6 +230,8 @@ HR_Analytics_Dashboard/
 
 Provides a comprehensive view of workforce attendance and hybrid work trends across the reporting period.
 
+<img src="Docs/HR Analytics - Overall.png" width="100%"/>
+
 ### Key KPIs
 
 | Metric | Value |
@@ -248,11 +249,11 @@ Provides a comprehensive view of workforce attendance and hybrid work trends acr
 - Monday showed the highest attendance while Friday experienced the highest WFH usage.
 - Workforce availability remained strong despite hybrid work flexibility.
 
-<img src="Docs/Images/Overall Dashboard.png" width="100%"/>
-
 ---
 
 ## 📅 April 2022 Workforce Analysis
+
+<img src="Docs/HR Analytics - Apr 22.png" width="100%"/>
 
 ### Key KPIs
 
@@ -271,11 +272,11 @@ Provides a comprehensive view of workforce attendance and hybrid work trends acr
 - Friday had the highest WFH participation.
 - Workforce availability remained exceptionally strong.
 
-<img src="Docs/Images/April Dashboard.png" width="100%"/>
-
 ---
 
 ## 📅 May 2022 Workforce Analysis
+
+<img src="Docs/HR Analytics - May 22.png" width="100%"/>
 
 ### Key KPIs
 
@@ -294,11 +295,12 @@ Provides a comprehensive view of workforce attendance and hybrid work trends acr
 - Friday recorded the lowest employee presence.
 - Workforce relied heavily on flexible work arrangements.
 
-<img src="Docs/Images/May Dashboard.png" width="100%"/>
 
 ---
 
 ## 📅 June 2022 Workforce Analysis
+
+<img src="Docs/HR Analytics - June 22.png" width="100%"/>
 
 ### Key KPIs
 
@@ -317,7 +319,6 @@ Provides a comprehensive view of workforce attendance and hybrid work trends acr
 - Attendance fluctuations became more stable.
 - Hybrid work continued without negatively impacting productivity.
 
-<img src="Docs/Images/June Dashboard.png" width="100%"/>
 
 ---
 
@@ -361,55 +362,82 @@ Despite fluctuations in attendance and remote work behavior, workforce availabil
 
 ## 🧮 Important DAX Measures
 
-## Presence %
+The dashboard uses DAX measures to dynamically calculate workforce attendance, remote work adoption, and employee absenteeism across different time periods.
+
+---
+
+## 1️⃣ Present Days
+
+```DAX
+Present Days =
+VAR presentdays =
+    CALCULATE(
+        COUNT('Final Data'[Value]),
+        'Final Data'[Value] = "P"
+    )
+
+RETURN
+    presentdays + [WFH Count]
+```
+
+### 📌 Business Insight
+
+> Calculates total employee availability by combining both office attendance and work-from-home days, providing a complete measure of workforce participation.
+
+
+## 2️⃣ Presence %
 
 ```DAX
 Presence % =
 DIVIDE(
     [Present Days],
-    [Total Working Days]
-) * 100
+    [Total Working Days],
+    0
+)
 ```
 
-### Business Insight
+### 📌 Business Insight
 
-Measures overall workforce attendance and employee availability.
+> Measures overall workforce attendance and availability, helping HR teams monitor employee engagement and operational readiness.
 
----
 
-## WFH %
+## 3️⃣ Work From Home %
 
 ```DAX
 WFH % =
 DIVIDE(
-    [WFH Days],
-    [Total Working Days]
-) * 100
+    [WFH Count],
+    [Present Days],
+    0
+)
 ```
 
-### Business Insight
+### 📌 Business Insight
 
-Tracks hybrid work adoption and remote work utilization.
+> Tracks the proportion of employee attendance fulfilled through remote work, enabling analysis of hybrid work adoption and flexibility trends.
 
----
 
-## Sick Leave %
+## 4️⃣ Sick Leave %
 
 ```DAX
 SL % =
 DIVIDE(
-    [Sick Leave Days],
-    [Total Working Days]
-) * 100
+    [SL Count],
+    [Total Working Days],
+    0
+)
 ```
 
-### Business Insight
+### 📌 Business Insight
 
-Monitors employee absenteeism and workforce health.
+> Measures absenteeism due to illness and helps HR teams identify workforce health patterns and potential attendance risks.
+
+
+Together, these metrics provide a comprehensive view of workforce attendance behavior, workplace flexibility, and organizational productivity.
 
 ---
 
-# 🧹 Data Cleaning & Transformation
+## Data Cleaning & Transformation
 
 The project involved extensive preprocessing and transformation:
 
@@ -425,33 +453,33 @@ The project involved extensive preprocessing and transformation:
 
 ---
 
-# 💼 Value Delivered Through This Analysis
+## Value Delivered Through This Analysis
 
-## Workforce Visibility
+### Workforce Visibility
 
 Provided complete visibility into employee attendance behavior.
 
-## Attendance Intelligence
+### Attendance Intelligence
 
 Enabled HR teams to proactively monitor workforce availability.
 
-## Hybrid Work Insights
+### Hybrid Work Insights
 
 Measured effectiveness of remote work policies.
 
-## Leave Management
+### Leave Management
 
 Identified absenteeism trends and leave utilization patterns.
 
-## Executive Reporting
+### Executive Reporting
 
 Delivered decision-ready KPI reporting for leadership teams.
 
 ---
 
-# 📚 Key Learnings
+## 📚 Key Learnings
 
-## Technical Learnings
+### Technical Learnings
 
 - Power BI Dashboard Development
 - DAX KPI Engineering
@@ -470,7 +498,7 @@ Delivered decision-ready KPI reporting for leadership teams.
 
 ---
 
-# 🚀 Future Improvements
+## 🚀 Future Improvements
 
 Planned enhancements:
 
@@ -484,7 +512,7 @@ Planned enhancements:
 
 ---
 
-# 🌟 About Me
+## 🌟 About Me
 
 Hi there! I'm **Kaustubh Sutar**, a Data Analyst passionate about transforming raw data into meaningful business insights using Power BI, SQL, Python, Excel, PySpark, and Databricks.
 
@@ -496,7 +524,7 @@ I enjoy building dashboards, designing analytical solutions, and uncovering insi
 
 ---
 
-# ⭐ Support This Project
+## ⭐ Support This Project
 
 If you found this project valuable:
 
@@ -507,7 +535,7 @@ If you found this project valuable:
 
 ---
 
-# 🛡️ License
+## 🛡️ License
 
 This project is licensed under the MIT License.
 
