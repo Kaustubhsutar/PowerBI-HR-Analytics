@@ -366,7 +366,7 @@ The dashboard uses DAX measures to dynamically calculate workforce attendance, r
 
 ---
 
-## 1️⃣ Present Days
+### 1️⃣ Present Days
 
 ```DAX
 Present Days =
@@ -385,7 +385,7 @@ RETURN
 > Calculates total employee availability by combining both office attendance and work-from-home days, providing a complete measure of workforce participation.
 
 
-## 2️⃣ Presence %
+### 2️⃣ Presence %
 
 ```DAX
 Presence % =
@@ -401,7 +401,7 @@ DIVIDE(
 > Measures overall workforce attendance and availability, helping HR teams monitor employee engagement and operational readiness.
 
 
-## 3️⃣ Work From Home %
+### 3️⃣ Work From Home %
 
 ```DAX
 WFH % =
@@ -417,7 +417,7 @@ DIVIDE(
 > Tracks the proportion of employee attendance fulfilled through remote work, enabling analysis of hybrid work adoption and flexibility trends.
 
 
-## 4️⃣ Sick Leave %
+### 4️⃣ Sick Leave %
 
 ```DAX
 SL % =
